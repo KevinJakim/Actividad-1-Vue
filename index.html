@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Tareas</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div id="app">
+        <h1>Lista de Tareas</h1>
+
+        <!-- Formulario para agregar una tarea -->
+        <form @submit.prevent="addTask">
+            <input type="text" v-model="newTask" placeholder="Agregar tarea">
+            <button type="submit">Agregar</button>
+        </form>
+
+        <!-- Lista de tareas -->
+        <ul>
+            <li v-for="task in tasks">
+                {{ task }}
+                <button @click="deleteTask(task)">Eliminar</button>
+            </li>
+        </ul>
+
+        <!-- Al eliminar una tarea, aparecera completada -->
+        <p>Tareas completadas: {{ completedTasks }}</p>
+        <!-- Al agregar una tarea, se sumaran al total de las tareas -->
+        <p>Total de tareas: {{ totalTasks }}</p>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
